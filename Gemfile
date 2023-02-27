@@ -70,4 +70,16 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
   gem "cucumber"
+  gem 'bundler-audit'
+  gem 'capybara-screenshot'
+  gem 'cucumber-rails', require: false
+  gem 'cuprite'
+  gem 'database_cleaner'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
+  gem 'simplecov'
 end
