@@ -86,3 +86,5 @@ group :test do
   gem 'rubocop-rspec'
   gem 'simplecov'
 end
+
+gem "cssbundling-rails", "~> 1.1"
