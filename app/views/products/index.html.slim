@@ -2,9 +2,8 @@ h1
   | Shop All
 .row
   - @products.each do |product|
-    .col-sm-3
-      .card.m-3
+    .col-md-3
+      .card.mx-1.my-2
         = image_tag "product", class: 'card-img-top'
         .card-body
-          h5.card-title
-            = product.name
+          = link_to product.name, product_path(product)

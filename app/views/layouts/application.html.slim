@@ -8,6 +8,25 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     / = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  body
-    = yield
+  body.bg-light.bg-gradient
+    .m-4.rounded.bg-white
+      h1.text-center.m-1
+        | A Stone's Throw
+      nav.navbar.navbar-expand-lg.navbar-light
+        .container-fluid
+          ul.navbar-nav
+            li.nav-item
+              = link_to 'Home',
+                        root_path,
+                        class: 'nav-link'
+            li.nav-item
+              = link_to 'Shop All',
+                        products_path,
+                        class: 'nav-link'
+      .container
+        .row
+          .col-2
+          .col-8
+            = yield
+          .col-2
 
