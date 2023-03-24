@@ -1,0 +1,12 @@
+require: 
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
+    - 'config/environments/*.rb'
+    - 'config/initializers/devise.rb'

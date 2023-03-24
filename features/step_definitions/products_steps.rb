@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 Given('I am on the products index page') do
-  visit "/products/"
+  visit '/products/'
 end
 
 Given('There are multiple products') do
@@ -8,12 +10,12 @@ Given('There are multiple products') do
 end
 
 Given('I am on the product show page') do
-  visit "/products/" + @primary_product.id.to_s
+  visit "/products/#{@primary_product.id}"
 end
 
 Then('I see the product listed') do
   expect(page).to have_content(@primary_product.name)
-end 
+end
 
 Then('I see the product details') do
   expect(page).to have_content(@primary_product.name)
