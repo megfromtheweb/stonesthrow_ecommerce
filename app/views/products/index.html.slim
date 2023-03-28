@@ -1,9 +1,15 @@
-h1
+h2
   | Shop All
 .row
   - @products.each do |product|
-    .col-md-3
-      .card.mx-1.my-2
+    .col-lg-3.col-md-4
+      .card.my-2.shadow-sm
         = image_tag "product", class: 'card-img-top'
         .card-body
-          = link_to product.name, product_path(product)
+          h5.card-title.mb-2
+            = product.name
+          p.card-text
+            | Lorem ipsum dolor sit amet consectetur
+          h6.card-subtitle.mb-3.text-muted
+            = number_to_currency(product.price, locale: :"en-GB")
+          = link_to 'Options', product_path(product), class: ["btn", "btn-white", "border", "w-100"]
