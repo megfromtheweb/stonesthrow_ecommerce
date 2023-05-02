@@ -1,0 +1,49 @@
+require: 
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  Exclude:
+  - vendor/**/*
+  - lib/tasks/*
+  - bin/*
+  - node_modules/**/*
+  - tmp/**/*
+  - node_modules/**/*
+  - config/puma.rb
+  - config/initializers/devise.rb
+  - db/schema.rb
+  - lib/tasks/cucumber.rake
+  - script/cucumber
+  - spec/rails_helper.rb
+  - spec/spec_helper.rb
+  - script/data_migrations/*
+
+Layout/FirstArgumentIndentation:
+  Exclude:
+    - app/components/**/*
+Layout/FirstHashElementIndentation:
+  Exclude:
+    - app/views/**/*
+    - app/components/**/*
+Layout/LineLength:
+  Max: 120
+  Exclude:
+  - Gemfile
+
+Metrics/AbcSize:
+  Exclude:
+  - db/migrate/*
+  - db/oss_proxy_migrate/*
+Metrics/BlockLength:
+  Enabled: false
+Metrics/MethodLength:
+  Exclude:
+  - db/migrate/*
+  - db/oss_proxy_migrate/*
+
+Style/Documentation:
+  Enabled: false
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
