@@ -9,4 +9,4 @@
       = number_to_currency(@product.price, locale: :"en-GB")
     p.text-sm
       | Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum tenetur saepe ullam dignissimos reiciendis exercitationem ducimus minus nulla, inventore sequi velit ab voluptatibus earum repudiandae deleniti animi tempore sed. Voluptatibus!
-    = link_to 'Buy Me!', product_path(@product), class: ["btn", "btn-white", "border", "w-100"]
+    = link_to 'Buy Me!', payment_success_path(1), class: ["btn", "btn-white", "border", "w-100"]

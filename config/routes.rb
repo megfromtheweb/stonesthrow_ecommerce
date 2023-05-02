@@ -6,4 +6,7 @@ Rails.application.routes.draw do
     index
     show
   ]
+  resources :payments do
+    get "success"
+  end
 end
