@@ -11,3 +11,8 @@ Feature: Payment Gateway
     Given I am on the product show page
     When I click 'Buy Me!'
     Then A new order is created
+
+  Scenario: Checkout
+    Given I am on the product show page
+    When I click 'Buy Me!'
+    Then I see my order number

@@ -11,3 +11,7 @@ end
 Then('A new order is created') do
   expect(Order.last.order_number).to eq(99999)
 end
+
+Then('I see my order number') do
+  expect(page).to have_content(Order.last.order_number)
+end
