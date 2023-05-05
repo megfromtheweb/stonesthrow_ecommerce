@@ -8,10 +8,14 @@ Then("I am redirected to the payment complete page") do
   expect(page).to have_content("Thank you for your order")
 end
 
-Then('A new order is created') do
+Then("A new order is created") do
   expect(Order.last.order_number).to eq(99999)
 end
 
-Then('I see my order number') do
+Then("I see my order number") do
   expect(page).to have_content(Order.last.order_number)
+end
+
+Then("A new purchase is created") do
+  expect(Purchase.last.product_id).to eq(@primary_product.id)
 end

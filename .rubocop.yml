@@ -43,6 +43,9 @@ Metrics/MethodLength:
   - db/migrate/*
   - db/oss_proxy_migrate/*
 
+Rails/CreateTableWithTimestamps:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 Style/StringLiterals:

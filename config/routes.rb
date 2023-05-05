@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     show
   ]
   resources :payments do
+    post "create"
     get "success"
   end
 end
