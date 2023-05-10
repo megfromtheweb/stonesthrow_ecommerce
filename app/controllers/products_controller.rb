@@ -3,10 +3,11 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
+    @cart = cart
   end
 
   def show
     @product = Product.find(params[:id])
-    @order = Order.find(session[:order_id])
+    @cart = cart
   end
 end

@@ -1,6 +1,7 @@
 .row
   .col-md-6
     .
+      = @sessionthing
       = image_tag "product", class: ['w-100', 'rounded']
   .col-md-6
     h1
@@ -9,5 +10,3 @@
       = number_to_currency(@product.price, locale: :"en-GB")
     p.text-sm
       | Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum tenetur saepe ullam dignissimos reiciendis exercitationem ducimus minus nulla, inventore sequi velit ab voluptatibus earum repudiandae deleniti animi tempore sed. Voluptatibus!
-    = button_to 'Add to Cart',  { action: 'update', controller: 'order', id: 1, product_id: @product.id },
-        method: :post , class: ["btn", "btn-white", "border", "w-100"]
