@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
       cart
     end
 
-    # TODO drop empty orders periodically
+    # TODO: drop empty orders periodically
   end
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Purchase < ApplicationRecord
+class OrderLineItem < ApplicationRecord
   belongs_to :product
   belongs_to :order
 end

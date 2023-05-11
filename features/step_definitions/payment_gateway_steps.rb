@@ -9,7 +9,7 @@ Then("I am redirected to the payment complete page") do
 end
 
 Then("A new order is created") do
-  expect(Order.last.order_number).to eq(99999)
+  expect(Order.last.order_number).to eq(99_999)
 end
 
 Then("I see my order number") do

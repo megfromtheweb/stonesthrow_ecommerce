@@ -2,10 +2,10 @@
 
 class Order < ApplicationRecord
   has_one :payment
-  has_many :purchases
-  has_many :products, through: :purchases
+  has_many :order_line_items
+  has_many :products, through: :order_line_items
 
-  enum(state: { created: 0, paid: 1 , picked: 2 , dispatched: 3 })
+  enum(state: { created: 0, paid: 1, picked: 2, dispatched: 3 })
 
-  scope :ordered, -> {where(state: %w[paid picked dispatched])}
+  scope :ordered, -> { where(state: %w[paid picked dispatched]) }
 end
