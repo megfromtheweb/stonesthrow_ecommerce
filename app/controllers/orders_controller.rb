@@ -11,5 +11,15 @@ class OrdersController < ApplicationController
 
   def update
     order = Order.find(params[:id])
+    if params[:product_id]
+      OrderService.create_list_item(order.id, params[:product_id])
+    end
   end
+
+  private
+
+  def order_params
+    params.permit(:product_id)
+  end
+
 end

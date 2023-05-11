@@ -9,5 +9,7 @@ class ApplicationController < ActionController::Base
       session[:cart_id] = cart.id
       cart
     end
+
+    # TODO drop empty orders periodically
   end
 end

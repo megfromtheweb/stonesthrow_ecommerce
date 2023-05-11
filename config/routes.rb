@@ -10,4 +10,10 @@ Rails.application.routes.draw do
     post "create"
     get "success"
   end
+
+  resources :orders, only: %i[
+    index
+    show
+    update
+  ]
 end
