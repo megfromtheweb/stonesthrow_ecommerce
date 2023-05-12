@@ -10,4 +10,9 @@ class OrderService
       OrderLineItem.create(order_id: order_id, product_id: product_id, quantity: 1)
     end
   end
+
+  def self.get_line_items(order_id)
+    product_ids = OrderLineItem.where(order_id: order_id).map(&:product_id)
+    Product.find(product_ids)
+  end
 end

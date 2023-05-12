@@ -1,8 +1,6 @@
-xh2
-  | Shop All 
-  = @cart.id
+
 .row
-  - @products.each do |product|
+  - @line_items.each do |product|
     .col-lg-3.col-md-4
       .card.my-2.shadow-sm
         = image_tag "product", class: 'card-img-top'
