@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
 
   def update
     if @line_item
-      @line_item.update_quantity(params[:quantity])
+      @line_item.increase_quantity(params[:quantity])
     else
       @order.order_line_items.create(product_id: params[:product_id], quantity: params[:quantity])
     end

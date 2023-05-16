@@ -25,7 +25,7 @@ html
               = link_to 'Shop All',
                 products_path,
                 class: ['nav-link', 'p-1']
-              = link_to "Cart (#{@cart_total})",
+              = link_to "Cart (#{@cart.total_quantity})",
                 order_path(@cart.id),
                 class: ['nav-link', 'p-1']
       .container.my-5

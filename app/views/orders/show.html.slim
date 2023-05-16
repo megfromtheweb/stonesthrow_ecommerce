@@ -5,9 +5,9 @@
       - @line_items.each do |line_item|
         .card.my-2.shadow-sm
           .row
-            .col-2
+            .col-4
               = image_tag "product", class: 'img-fluid rounded-start'
-            .col-10
+            .col-8
               .card-body
                 h5.card-title.mb-2
                   = line_item.product.name
@@ -15,7 +15,15 @@
                   = number_to_currency(line_item.product.price, locale: :"en-GB")
                   | &nbsp;Quantity:&nbsp;
                   = line_item.quantity
-                = button_to "Remove from Cart", order_path(@cart.id), method: :patch, params: { product_id: line_item.product.id, quantity: 0 }
+                .row.pt-4
+                  .col-7
+                    = button_to "Remove from Cart", order_line_item_path(line_item.id), method: :delete, class: "btn btn-danger"
+                  .col
+                    .input-group
+                      = button_to "-", order_line_item_decrement_path(line_item.id), method: :put, params: { decrement: 1 }, class: "btn btn-outline-secondary"
+                      = content_tag(:input, nil, type: "text", placeholder: "#{line_item.quantity}", disabled: true, class: "form-control")
+                      = button_to "+", order_line_item_increment_path(line_item.id), method: :put, params: { increment: 1 }, class: "btn btn-outline-secondary"
+
     - else
       h5
         | Your cart is empty

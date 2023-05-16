@@ -9,7 +9,7 @@ class Order < ApplicationRecord
 
   scope :ordered, -> { where(state: %w[paid picked dispatched]) }
 
-  def get_total_quantity
+  def total_quantity
     order_line_items.map(&:quantity).sum
   end
 end

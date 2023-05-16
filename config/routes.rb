@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     show
   ]
   resources :payments do
-    post "create"
     get "success"
   end
 
@@ -16,4 +15,10 @@ Rails.application.routes.draw do
     show
     update
   ]
+
+  resources :order_line_items do
+    put "increment"
+    put "decrement"
+  end
+
 end
