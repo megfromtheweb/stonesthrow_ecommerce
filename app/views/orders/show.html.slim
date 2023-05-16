@@ -1,14 +1,19 @@
 
 .row
-  - @line_items.each do |product|
-    .col-lg-3.col-md-4
-      .card.my-2.shadow-sm
-        = image_tag "product", class: 'card-img-top'
-        .card-body
-          h5.card-title.mb-2
-            = product.name
-          p.card-text
-            | Lorem ipsum dolor sit amet consectetur
-          h6.card-subtitle.mb-3.text-muted
-            = number_to_currency(product.price, locale: :"en-GB")
-          = link_to 'Options', product_path(product), class: ["btn", "btn-white", "border", "w-100"]
+  .col-md-6
+    - @line_items.each do |product|
+        .card.my-2.shadow-sm
+          .row
+            .col-2
+              = image_tag "product", class: 'img-fluid rounded-start'
+            .col-10
+              .card-body
+                h5.card-title.mb-2
+                  = product.name
+                h6.card-subtitle.mb-3.text-muted
+                  = number_to_currency(product.price, locale: :"en-GB")
+  .col-md-6
+    .card.my-2.shadow-sm
+      .card-body
+        h5.card-title.mb-2
+          | Overview
