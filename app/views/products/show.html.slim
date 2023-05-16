@@ -9,4 +9,4 @@
       = number_to_currency(@product.price, locale: :"en-GB")
     p.text-sm
       | Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum tenetur saepe ullam dignissimos reiciendis exercitationem ducimus minus nulla, inventore sequi velit ab voluptatibus earum repudiandae deleniti animi tempore sed. Voluptatibus!
-    = button_to "Add to Cart", order_path(@cart.id), method: :patch, params: { product_id: @product.id }
+    = button_to "Add to Cart", order_path(@cart.id), method: :patch, params: { product_id: @product.id, quantity: +1 }

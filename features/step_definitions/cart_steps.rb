@@ -15,4 +15,8 @@ Then("I see cart count increase") do
   expect(page).to have_content("Cart (1)")
 end
 
+Then('I do not see that item in my cart') do
+  expect(page).to have_content("Your cart is empty")
+end
+
 

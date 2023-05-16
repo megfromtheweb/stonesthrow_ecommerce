@@ -11,9 +11,8 @@ class OrdersController < ApplicationController
 
   def update
     order = Order.find(params[:id])
-    return unless params[:product_id]
-    OrderService.create_line_item(order.id, params[:product_id])
-    redirect_to product_path(params[:product_id])
+    OrderService.update_line_item(order.id, params)
+    redirect_back(fallback_location: order_path(cart.id))
   end
 
   private
@@ -21,5 +20,4 @@ class OrdersController < ApplicationController
   def order_params
     params.permit(:product_id)
   end
-
 end

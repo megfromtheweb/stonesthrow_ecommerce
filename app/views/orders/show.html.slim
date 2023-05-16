@@ -1,17 +1,22 @@
 
 .row
   .col-md-6
-    - @line_items.each do |product|
-        .card.my-2.shadow-sm
-          .row
-            .col-2
-              = image_tag "product", class: 'img-fluid rounded-start'
-            .col-10
-              .card-body
-                h5.card-title.mb-2
-                  = product.name
-                h6.card-subtitle.mb-3.text-muted
-                  = number_to_currency(product.price, locale: :"en-GB")
+    - if @line_items.count > 0
+      - @line_items.each do |product|
+          .card.my-2.shadow-sm
+            .row
+              .col-2
+                = image_tag "product", class: 'img-fluid rounded-start'
+              .col-10
+                .card-body
+                  h5.card-title.mb-2
+                    = product.name
+                  h6.card-subtitle.mb-3.text-muted
+                    = number_to_currency(product.price, locale: :"en-GB")
+                  = button_to "Remove from Cart", order_path(@cart.id), method: :patch, params: { product_id: product.id, quantity: 0 }
+    - else
+      h5
+        | Your cart is empty
   .col-md-6
     .card.my-2.shadow-sm
       .card-body

@@ -1,14 +1,27 @@
 # frozen_string_literal: true
 
 class OrderService
-  def self.create_line_item(order_id, product_id)
-    if OrderLineItem.where(order_id: order_id, product_id: product_id).last
-      cart_item = OrderLineItem.where(order_id: order_id, product_id: product_id).last
-      quantity = cart_item.quantity
-      cart_item.update(quantity: quantity + 1)
+  def self.create_line_item(order_id, params)
+    OrderLineItem.create(order_id: order_id, product_id: params[:product_id], quantity: 1)
+  end
+
+  def self.update_line_item(order_id, params)
+    if params[:quantity] == '0'
+      delete_line_item(order_id, params)
     else
-      OrderLineItem.create(order_id: order_id, product_id: product_id, quantity: 1)
+      if OrderLineItem.where(order_id: order_id, product_id: params[:product_id]).last
+        cart_item = OrderLineItem.where(order_id: order_id, product_id: params[:product_id]).last
+        quantity = cart_item.quantity
+        cart_item.update(quantity: params[:quantity])
+      else
+        create_line_item(order_id, params)
+      end
     end
+  end
+
+  def self.delete_line_item(order_id, params)
+    cart_item = OrderLineItem.where(order_id: order_id, product_id: params[:product_id]).last
+    cart_item.destroy
   end
 
   def self.get_line_items(order_id)
