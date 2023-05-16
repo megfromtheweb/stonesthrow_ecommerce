@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_11_094705) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_16_110647) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "order_line_items", force: :cascade do |t|
     t.bigint "product_id"
     t.bigint "order_id"
-    t.integer "quantity"
+    t.integer "quantity", default: 0
     t.index ["order_id"], name: "index_order_line_items_on_order_id"
     t.index ["product_id"], name: "index_order_line_items_on_product_id"
   end

@@ -1,21 +1,21 @@
 
 .row
   .col-md-6
-    - if @line_items[0].count > 0
-      - @line_items[0].each_with_index do |product, index|
-          .card.my-2.shadow-sm
-            .row
-              .col-2
-                = image_tag "product", class: 'img-fluid rounded-start'
-              .col-10
-                .card-body
-                  h5.card-title.mb-2
-                    = product.name
-                  h6.card-subtitle.mb-3.text-muted
-                    = number_to_currency(product.price, locale: :"en-GB")
-                    | &nbsp;Quantity:&nbsp;
-                    = @line_items[1][index][:quantity]
-                  = button_to "Remove from Cart", order_path(@cart.id), method: :patch, params: { product_id: product.id, quantity: 0 }
+    - if @line_items.any?
+      - @line_items.each do |line_item|
+        .card.my-2.shadow-sm
+          .row
+            .col-2
+              = image_tag "product", class: 'img-fluid rounded-start'
+            .col-10
+              .card-body
+                h5.card-title.mb-2
+                  = line_item.product.name
+                h6.card-subtitle.mb-3.text-muted
+                  = number_to_currency(line_item.product.price, locale: :"en-GB")
+                  | &nbsp;Quantity:&nbsp;
+                  = line_item.quantity
+                = button_to "Remove from Cart", order_path(@cart.id), method: :patch, params: { product_id: line_item.product.id, quantity: 0 }
     - else
       h5
         | Your cart is empty
