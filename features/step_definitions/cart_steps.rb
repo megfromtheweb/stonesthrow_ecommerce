@@ -19,4 +19,8 @@ Then('I do not see that item in my cart') do
   expect(page).to have_content("Your cart is empty")
 end
 
+Then('I see the item quantity') do
+  expect(page).to have_content("Quantity: 1")
+end
+
 

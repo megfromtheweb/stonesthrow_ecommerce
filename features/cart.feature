@@ -12,6 +12,11 @@ Feature: Cart
     When I click 'Cart (1)'
     Then I see the items listed
 
+  Scenario: Item quantity is visible
+    Given there are items in my cart
+    When I click 'Cart (1)'
+    Then I see the item quantity
+
   Scenario: Remove item from cart
     Given there are items in my cart
     When I click 'Cart (1)'
