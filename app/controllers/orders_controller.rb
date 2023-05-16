@@ -5,6 +5,8 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @line_items = OrderService.get_line_items(params[:id])
     @cart = cart
+    @cart_total = OrderService.get_cart_total(@cart.id)
+
   end
 
   def new; end

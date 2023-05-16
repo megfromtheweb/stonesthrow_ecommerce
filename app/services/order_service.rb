@@ -28,4 +28,8 @@ class OrderService
     product_ids = OrderLineItem.where(order_id: order_id).map(&:product_id)
     [Product.find(product_ids),OrderLineItem.where(order_id: order_id)]
   end
+
+  def self.get_cart_total(order_id)
+    OrderLineItem.where(order_id: order_id).map(&:quantity).sum
+  end
 end

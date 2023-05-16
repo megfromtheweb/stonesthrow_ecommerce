@@ -11,16 +11,6 @@ Then('I see the items listed') do
   expect(page).to have_content(@primary_product.name)
 end
 
-Then("I see cart count increase") do
-  expect(page).to have_content("Cart (1)")
+Then('I see {string}') do |string|
+  expect(page).to have_content(string)
 end
-
-Then('I do not see that item in my cart') do
-  expect(page).to have_content("Your cart is empty")
-end
-
-Then('I see the item quantity') do
-  expect(page).to have_content("Quantity: 1")
-end
-
-
