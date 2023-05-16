@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
+  before_action :find_order, only: %i[show update]
   before_action :find_line_item, only: :update
   def show
-    @order = Order.find(params[:id])
     @line_items = @order.order_line_items
     @cart = cart
-    @cart_total = @cart.get_total_quantity
   end
 
   def new; end
@@ -26,8 +25,11 @@ class OrdersController < ApplicationController
     params.permit(:product_id)
   end
 
-  def find_line_item
+  def find_order
     @order = Order.find(params[:id])
+  end
+
+  def find_line_item
     @line_item = @order.order_line_items.find_by(product_id: params[:product_id])
   end
 end
