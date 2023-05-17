@@ -10,8 +10,11 @@ class OrderLineItem < ApplicationRecord
 
   def decrease_quantity(decrement)
     update(quantity: quantity - decrement.to_i)
-    if self.quantity < 1
-      self.destroy
+  end
+
+  def destroy_if_zero
+    if quantity < 1
+      destroy
     end
   end
 end

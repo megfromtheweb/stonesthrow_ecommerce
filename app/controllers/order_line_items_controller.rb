@@ -10,6 +10,12 @@ class OrderLineItemsController < ApplicationController
 
   def decrement
     @line_item.decrease_quantity(params[:decrement])
+    @line_item.destroy_if_zero
+    redirect_back(fallback_location: order_path(cart.id))
+  end
+
+  def destroy
+    @line_item.destroy
     redirect_back(fallback_location: order_path(cart.id))
   end
 
@@ -20,6 +26,10 @@ class OrderLineItemsController < ApplicationController
   end
 
   def find_line_item
-    @line_item = OrderLineItem.find(params[:order_line_item_id])
+    if params[:order_line_item_id]
+      @line_item = OrderLineItem.find(params[:order_line_item_id])
+    else
+      @line_item = OrderLineItem.find(params[:id])
+    end
   end
 end
