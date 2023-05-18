@@ -26,10 +26,6 @@ class OrderLineItemsController < ApplicationController
   end
 
   def find_line_item
-    if params[:order_line_item_id]
-      @line_item = OrderLineItem.find(params[:order_line_item_id])
-    else
-      @line_item = OrderLineItem.find(params[:id])
-    end
+    @line_item = OrderLineItem.find(params[:order_line_item_id] || params[:id])
   end
 end

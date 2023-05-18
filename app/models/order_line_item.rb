@@ -12,9 +12,13 @@ class OrderLineItem < ApplicationRecord
     update(quantity: quantity - decrement.to_i)
   end
 
+  def set_quantity(quantity)
+    update(quantity: quantity)
+  end
+
   def destroy_if_zero
-    if quantity < 1
-      destroy
-    end
+    return unless quantity < 1
+
+    destroy
   end
 end

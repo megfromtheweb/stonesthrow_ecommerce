@@ -20,5 +20,4 @@ Rails.application.routes.draw do
     put "increment"
     put "decrement"
   end
-
 end
