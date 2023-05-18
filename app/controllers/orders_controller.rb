@@ -3,6 +3,7 @@
 class OrdersController < ApplicationController
   before_action :find_order, only: %i[show update]
   before_action :find_line_item, only: :update
+
   def show
     @line_items = @order.order_line_items
     @cart = cart
@@ -22,7 +23,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.permit(:product_id)
+    params.permit(:product_id, :quantity)
   end
 
   def find_order

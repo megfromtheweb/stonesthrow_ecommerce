@@ -8,8 +8,6 @@ h2
         .card-body
           h5.card-title.mb-2
             = product.name
-          p.card-text
-            | Lorem ipsum dolor sit amet consectetur
           h6.card-subtitle.mb-3.text-muted
             = number_to_currency(product.price, locale: :"en-GB")
           = link_to 'Options', product_path(product), class: ["btn", "btn-white", "border", "w-100"]
