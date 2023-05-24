@@ -10,97 +10,14 @@ html
     / = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body style='background-color:#A2666F'
     .mx-3.my-2.rounded.bg-white
-      header
-        h1.text-center.m-3.pt-2
-          | A Stone's Throw
-
-        nav.navbar.navbar-expand-lg.navbar-light
-          .container-fluid
-            button.navbar-toggler type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
-              span.navbar-toggler-icon
-            #navbarNav.collapse.navbar-collapse.justify-content-center
-              = link_to 'Home',
-                root_path,
-                class: ['nav-link', 'p-1']
-              = link_to 'Shop All',
-                products_path,
-                class: ['nav-link', 'p-1']
-              = link_to "Cart (#{@cart.total_quantity})",
-                order_path(@cart.id),
-                class: ['nav-link', 'p-1']
+      = render 'home/header'
       .container.my-5
         .row
           .col-1
           .col-10
-            p.notice 
-              = notice 
-            p.alert
-              = alert
+            = render 'layouts/alerts'
             = yield
           .col-1
      
       .container
-        footer.row.row-cols-1.row-cols-sm-2.row-cols-md-5.py-5.my-5.border-top
-          .col.mb-3
-            a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none"
-              svg.bi.me-2 width="40" height="32"
-                use xlink:href="#bootstrap"
-            p.text-muted © 2022
-          .col.mb-3
-          .col.mb-3
-            h5 Section
-            ul.nav.flex-column
-              li.nav-item.mb-2
-                a href="#" class="nav-link p-0 text-muted"
-                  | Home
-              li.nav-item.mb-2
-                a href="#" class="nav-link p-0 text-muted"
-                  | Home
-              li.nav-item.mb-2
-                a href="#" class="nav-link p-0 text-muted"
-                  | Home
-              li.nav-item.mb-2
-                a href="#" class="nav-link p-0 text-muted"
-                  | Home
-              li.nav-item.mb-2
-                a href="#" class="nav-link p-0 text-muted"
-                  | Home
-          .col.mb-3
-            h5 Section
-            ul.nav.flex-column
-              li.nav-item.mb-2
-                a href="#" class="nav-link p-0 text-muted"
-                  | Home
-              li.nav-item.mb-2
-                a href="#" class="nav-link p-0 text-muted"
-                  | Home
-              li.nav-item.mb-2
-                a href="#" class="nav-link p-0 text-muted"
-                  | Home
-              li.nav-item.mb-2
-                a href="#" class="nav-link p-0 text-muted"
-                  | Home
-              li.nav-item.mb-2
-                a href="#" class="nav-link p-0 text-muted"
-                  | Home
-          .col.mb-3
-            h5 Section
-            ul.nav.flex-column
-              li.nav-item.mb-2
-                a href="#" class="nav-link p-0 text-muted"
-                  | Home
-              li.nav-item.mb-2
-                a href="#" class="nav-link p-0 text-muted"
-                  | Home
-              li.nav-item.mb-2
-                a href="#" class="nav-link p-0 text-muted"
-                  | Home
-              li.nav-item.mb-2
-                a href="#" class="nav-link p-0 text-muted"
-                  | Home
-              li.nav-item.mb-2
-                a href="#" class="nav-link p-0 text-muted"
-                  | Home
-
-
-
+        = render 'home/footer'

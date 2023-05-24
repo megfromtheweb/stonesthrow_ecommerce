@@ -1,0 +1,6 @@
+- flash.each do |key, value|
+  .alert.alert-warning.alert-dismissible.fade.show.mt-1[role="alert"]
+    button.close[type="button" data-bs-dismiss="alert" aria-label="Close"]
+      span[aria-hidden="true"]
+        | ×
+    = content_tag :span, value, class: "flash #{key}", style: 'padding: 0; margin: 0;'
