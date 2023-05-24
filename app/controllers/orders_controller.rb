@@ -6,7 +6,6 @@ class OrdersController < ApplicationController
 
   def show
     @line_items = @order.order_line_items
-    @cart = cart
   end
 
   def new; end
