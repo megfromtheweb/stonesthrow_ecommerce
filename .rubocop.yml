@@ -45,6 +45,8 @@ Metrics/MethodLength:
 
 Rails/CreateTableWithTimestamps:
   Enabled: false
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
 Naming/AccessorMethodName:
   Enabled: false
 Style/Documentation:
