@@ -12,4 +12,8 @@ class Order < ApplicationRecord
   def total_quantity
     order_line_items.map(&:quantity).sum
   end
+
+  def editable?
+    return false unless scope = "created"
+  end
 end

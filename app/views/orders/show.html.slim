@@ -9,21 +9,24 @@
               = image_tag "product", class: 'img-fluid rounded-start'
             .col-8
               .card-body
-                h5.card-title.mb-2
+                h5.card-title.mb-3
                   = line_item.product.name
-                h6.card-subtitle.mb-3.text-muted
+                h6.card-subtitle.mb-2.text-muted
                   = number_to_currency(line_item.product.price, locale: :"en-GB")
-                  | &nbsp;Quantity:&nbsp;
-                  = line_item.quantity
-                .row.pt-4
-                  .col-7
-                    = button_to "Remove from Cart", order_line_item_path(line_item.id), method: :delete, class: "btn btn-danger"
-                  .col
-                    .input-group
-                      = button_to "-", order_line_item_decrement_path(line_item.id), method: :put, params: { decrement: 1 }, class: "btn btn-outline-secondary"
-                      = content_tag(:input, nil, type: "text", placeholder: "#{line_item.quantity}", disabled: true, class: "form-control")
-                      = button_to "+", order_line_item_increment_path(line_item.id), method: :put, params: { increment: 1 }, class: "btn btn-outline-secondary"
-
+                h6.card-subtitle.mb-2.text-muted
+                   = "Quantity: #{line_item.quantity}"
+                - if @order.editable?
+                  .row.pt-4
+                    .col-7
+                      = button_to "Remove from Cart", order_line_item_path(line_item.id), method: :delete, class: "btn btn-danger"
+                    .col
+                      .input-group
+                        = button_to "-", order_line_item_decrement_path(line_item.id), method: :put, params: { decrement: 1 }, class: "btn btn-outline-secondary"
+                        = content_tag(:input, nil, type: "text", placeholder: "#{line_item.quantity}", disabled: true, class: "form-control")
+                        = button_to "+", order_line_item_increment_path(line_item.id), method: :put, params: { increment: 1 }, class: "btn btn-outline-secondary"
+                - else
+                  h6.card-subtitle.mb-2.text-muted
+                    = "SKU: #{line_item.product.sku}"
     - else
       h5
         | Your cart is empty
