@@ -1,29 +1,32 @@
 header
-  h1.text-center.m-3.pt-2
+  h1.text-center.m-3.pt-3
     | A Stone's Throw
 
-  nav.navbar.navbar-expand-lg.navbar-light
+  nav.navbar.navbar-expand-lg.navbar-light.border-bottom
     .container-fluid
       button.navbar-toggler type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
         span.navbar-toggler-icon
       #navbarNav.collapse.navbar-collapse.justify-content-center
         = link_to 'Home',
           root_path,
-          class: ['nav-link', 'p-1']
+          class: ['nav-link', 'px-3']
         = link_to 'Shop All',
           products_path,
-          class: ['nav-link', 'p-1']
+          class: ['nav-link', 'px-3']
         = link_to "Cart (#{@cart.total_quantity})",
           order_path(@cart.id),
-          class: ['nav-link', 'p-1']
+          class: ['nav-link', 'px-3']
+        = link_to "Orders",
+          orders_path,
+          class: ['nav-link', 'px-3']
         - if user_signed_in?
           = link_to 'Settings',
                     edit_user_registration_path,
-                    class: 'nav-link'
+                    class: ['nav-link', 'px-3']
           = link_to "Log out #{current_user.email}",
                     destroy_user_session_path,
                     method: :delete,
-                    class: 'nav-link'
+                    class: ['nav-link', 'px-3']
         - elsif current_page?(user_session_path)
         - else
-          = link_to 'Log in', user_session_path, class: 'nav-link'
+          = link_to 'Log in | Sign up', user_session_path, class: ['nav-link', 'px-3']

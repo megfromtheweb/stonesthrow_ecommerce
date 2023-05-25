@@ -5,6 +5,7 @@ require 'simplecov'
     add_filter '/bin/'
     add_filter '/db/'
     add_filter '/spec/'
+    add_filter '/config/'
     add_filter '/jobs/application_job.rb'
     add_filter '/mailers/application_mailer.rb'
     enable_coverage :branch

@@ -2,7 +2,7 @@ doctype html
 html
   head
     title
-      | title
+      = "A Stone's Throw | #{@title}"
     meta[name="viewport" content="width=device-width,initial-scale=1"]
     = csrf_meta_tags
     = csp_meta_tag
@@ -10,14 +10,14 @@ html
     / = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body style='background-color:#A2666F'
     .mx-3.my-2.rounded.bg-white
-      = render 'home/header'
-      .container.my-5
+      .container.py-3
         .row
-          .col-1
+          = render 'home/header'
+        .row.pt-5
+          .col-md-1
           .col-10
             = render 'layouts/alerts'
             = yield
-          .col-1
-     
-      .container
-        = render 'home/footer'
+          .col-md-1
+        .row
+          = render 'home/footer'

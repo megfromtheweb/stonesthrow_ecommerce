@@ -1,6 +1,6 @@
 .login-form
-  h2
-    | Sign up
+  h2.text-center.pb-5
+    | Sign Up
   = form_with(model: resource,
               scope: resource_name,
               url: registration_path(resource_name),
@@ -9,21 +9,27 @@
       = render 'devise/shared/error_messages', resource: resource
     .form-inputs
 
-    .email
-      = form.label :email
-      = form.email_field :email, required: true, input_html: { autocomplete: 'email' }
+    .email.input-group.p-2
+      = form.label :email, class: "form-control"
+      = form.email_field :email, required: true, input_html: { autocomplete: 'email' }, class: "form-control"
     .password
-      = form.label :password
-      = form.password_field :password,
-                            required: true,
-                            hint: (" - #{@minimum_password_length} characters minimum" if @minimum_password_length),
-                            input_html: { autocomplete: 'new-password' }
-      br
-      = form.label :password_confirmation
-      = form.password_field :password_confirmation,
-                            required: true,
-                            input_html: { autocomplete: 'new-password' }
-    .form-actions
-      button#log-in-button.btn.log-in-button[type='submit']
-        | Sign Up
-  = render 'devise/shared/links'
+      .input-group.p-2
+        = form.label :password, class: "form-control"
+        = form.password_field :password,
+                              required: true,
+                              class: "form-control",
+                              hint: (" - #{@minimum_password_length} characters minimum" if @minimum_password_length),
+                              input_html: { autocomplete: 'new-password' }
+      .input-group.p-2
+        = form.label :password_confirmation, class: "form-control"
+        = form.password_field :password_confirmation,
+                              required: true,
+                              class: "form-control",
+                              input_html: { autocomplete: 'new-password' }
+    .row
+      .col
+        .form-actions.px-2
+          button#log-in-button.btn.btn-primary.log-in-button[type='submit']
+            | Sign Up
+      .col.pt-2
+        = render 'devise/shared/links'

@@ -1,0 +1,24 @@
+h2.text-center.pb-5
+  | Orders
+.row
+  - if @orders.any?
+    .table-responsive
+      table.table.table-hover.table-light.table-sm.table-fixed
+        tbody
+          thead
+            tr
+              th Order Number
+              th # of Items
+              th Total
+              th Ordered At
+          - @orders.each do |order|
+            
+              tr
+                td = link_to "Order ##{order.id}", order_path(order.id)
+                td = "#{order.total_quantity} items"
+                td = number_to_currency(order.total, locale: "en-GB")
+                td = order.created_at.strftime("%d/%m/%y %H:%M")
+    
+  - else
+    h5
+      | You currently have no orders

@@ -4,7 +4,16 @@ class OrdersController < ApplicationController
   before_action :find_order, only: %i[show update]
   before_action :find_line_item, only: :update
 
+  def index
+    @orders = Order.ordered
+  end
+
   def show
+    if @order.state == "created"
+      @title = "Cart"
+    else
+      @title = "Order ##{@order.id}"
+    end
     @line_items = @order.order_line_items
   end
 

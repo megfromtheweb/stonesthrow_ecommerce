@@ -1,21 +1,24 @@
 .login-form
-  h2
+  h2.text-center
     | Log in
   = form_with(model: resource,
               scope: resource_name,
               url: session_path(resource_name)) do |form|
     .container
       = render 'devise/shared/error_messages', resource: resource
-    .form-inputs
-      = form.label :email
-      = form.email_field :email, value: @email, required: false, autofocus: true
-    .form-inputs
-      = form.label :password
-      = form.password_field :password, value: @password, required: false
-    .form-inputs
-      = form.label :remember_me
-      = form.check_box :remember_me, as: :boolean if devise_mapping.rememberable?
-    .form-actions
-      button#log-in-button.btn.log-in-button[type='submit']
-        | Log In
-= render 'devise/shared/links'
+    .form-inputs.input-group.m-3
+      = form.label :email, class: "form-control"
+      = form.email_field :email, value: @email, required: false, autofocus: true, class: "form-control"
+    .form-inputs.input-group.m-3
+      = form.label :password, class: "form-control"
+      = form.password_field :password, value: @password, required: false, class: "form-control"
+    .row
+      .col
+        .form-inputs
+          = form.check_box :remember_me, class: "mx-3", as: :boolean if devise_mapping.rememberable?
+          = form.label :remember_me
+        .form-actions
+          button#log-in-button.btn.btn-primary.m-3.log-in-button[type='submit']
+            | Log In
+      .col.my-3
+        = render 'devise/shared/links'
