@@ -1,33 +1,45 @@
 header
-  h1.text-center.m-3.pt-3
+  h1#brand.text-center.pt-3
     | A Stone's Throw
+  h5.text-center.text-muted
+    | Painted Stone Collection
 
-  nav.navbar.navbar-expand-lg.navbar-light.border-bottom
+  nav.navbar.navbar-expand-md.navbar-light.border-bottom
     .container-fluid
-      button.navbar-toggler type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
-        span.navbar-toggler-icon
-      #navbarNav.collapse.navbar-collapse
-        = link_to 'Home',
-          root_path,
-          class: ['nav-link', 'px-3']
-        = link_to 'Shop All',
-          products_path,
-          class: ['nav-link', 'px-3']
-        = link_to "Orders",
-          orders_path,
-          class: ['nav-link', 'px-3']
-      .collapse.navbar-collapse.justify-content-end
-        = link_to "Cart (#{@cart.total_quantity})",
-          order_path(@cart.id),
-          class: ['nav-link', 'px-3']
-        - if user_signed_in?
-          = link_to 'Settings',
-                    edit_user_registration_path,
-                    class: ['nav-link', 'px-3']
-          = link_to "Log out #{current_user.email}",
-                    destroy_user_session_path,
-                    method: :delete,
-                    class: ['nav-link', 'px-3']
-        - elsif current_page?(user_session_path)
-        - else
-          = link_to 'Log in | Sign up', user_session_path, class: ['nav-link', 'px-3']
+      .navbar-collapse.collapse.w-100.order-1.order-md-0.dual-collapse2
+        ul.navbar-nav.me-auto
+          li.nav-item 
+            = link_to 'Home',
+              root_path,
+              class: ['nav-link', 'px-3']
+          li.nav-item
+            = link_to 'Shop All',
+              products_path,
+              class: ['nav-link', 'px-3']
+          li.nav-item
+            = link_to "Orders",
+              orders_path,
+              class: ['nav-link', 'px-3']    
+      .mx-auto.order-0
+        button.navbar-toggler type="button" data-bs-toggle="collapse" data-bs-target=".dual-collapse2" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+          span.navbar-toggler-icon
+      .navbar-collapse.collapse.w-100.order-3.dual-collapse2
+        ul.navbar-nav.ms-auto
+          li.nav-item
+            = link_to "Cart (#{@cart.total_quantity})",
+              order_path(@cart.id),
+              class: ['nav-link', 'px-3']
+          - if user_signed_in?
+            li.nav-item
+              = link_to 'Settings',
+                        edit_user_registration_path,
+                        class: ['nav-link', 'px-3']
+            li.nav-item
+              = link_to "Log out",
+                        destroy_user_session_path,
+                        method: :delete,
+                        class: ['nav-link', 'px-3']
+          - elsif current_page?(user_session_path)
+          - else
+            li.nav-item
+              = link_to 'Log in | Sign up', user_session_path, class: ['nav-link', 'px-3']
