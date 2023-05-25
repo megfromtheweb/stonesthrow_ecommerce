@@ -9,11 +9,11 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if @order.state == "created"
-      @title = "Cart"
-    else
-      @title = "Order ##{@order.id}"
-    end
+    @title = if @order.state == "created"
+               "Cart"
+             else
+               "Order ##{@order.id}"
+             end
     @line_items = @order.order_line_items
   end
 

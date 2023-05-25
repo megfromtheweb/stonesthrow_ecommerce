@@ -14,6 +14,8 @@ class Order < ApplicationRecord
   end
 
   def editable?
-    return false unless scope = "created"
+    return true if state == "created"
+
+    false
   end
 end

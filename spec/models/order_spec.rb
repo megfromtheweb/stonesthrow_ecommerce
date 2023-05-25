@@ -1,19 +1,21 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe Order, type: :model do
+require "rails_helper"
+
+describe Order do
   context do
-    let(:test_order) {create(:order)}
-    let(:test_products) {create_list(:product, 3)}
+    let(:test_order) { create(:order) }
+    let(:test_products) { create_list(:product, 3) }
 
-    describe 'total_quantity' do
+    describe "total_quantity" do
       before do
         line_items = []
         test_products.each do |product|
-          line_items.append(create(:order_line_item, order_id:test_order.id, product_id:product.id))
+          line_items.append(create(:order_line_item, order_id: test_order.id, product_id: product.id))
         end
       end
 
-      it 'returns sum of line item quantities' do 
+      it "returns sum of line item quantities" do
         expect(test_order.total_quantity).to eq(3)
       end
     end

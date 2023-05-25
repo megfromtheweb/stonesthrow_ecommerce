@@ -12,7 +12,6 @@ h2.text-center.pb-5
               th Total
               th Ordered At
           - @orders.each do |order|
-            
               tr
                 td = link_to "Order ##{order.id}", order_path(order.id)
                 td = "#{order.total_quantity} items"
