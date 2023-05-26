@@ -7,7 +7,7 @@ class Order < ApplicationRecord
 
   enum(state: { created: 0, paid: 1, packed: 2, dispatched: 3 })
 
-  scope :ordered, -> { where(state: %w[paid picked dispatched]) }
+  scope :ordered, -> { where(state: %w[paid packed dispatched]) }
 
   def total_quantity
     order_line_items.map(&:quantity).sum

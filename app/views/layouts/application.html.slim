@@ -17,11 +17,14 @@ html
       .container.py-3
         .row
           = render 'home/header'
-        .row.pt-5
-          .col-md-1
-          .col-10
-            = render 'layouts/alerts'
-            = yield
-          .col-md-1
+        .row
+          - if current_page?(root_path)
+            = yield 
+          - else
+            .col-md-1
+            .col-10.pt-5
+              = render 'layouts/alerts'
+              = yield
+            .col-md-1
         .row
           = render 'home/footer'

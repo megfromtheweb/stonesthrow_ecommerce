@@ -1,0 +1,30 @@
+#carouselExampleCaptions.carousel.slide.carousel-fade data-bs-ride="carousel"
+  .carousel-indicators
+    .button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"
+    .button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"
+    .button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"
+  .carousel-inner
+    .carousel-item.active
+      = image_tag "carousel1", class: %w[d-block w-100]
+      .carousel-caption.d-none.d-md-block
+        .h5 Pebbles
+        .p Explore our wide range of smaller stones.
+        = button_to "Shop Pebbles", products_path, method: :get, params: { category: "pebbles"}, class: ["btn", "btn-secondary", "mt-2", "shadow-lg"]
+    .carousel-item
+      = image_tag "carousel2", class: %w[d-block w-100]
+      .carousel-caption.d-none.d-md-block
+        .h5 Rocks
+        .p Explore our selection of mid-size stones.
+        = button_to "Shop Rocks", products_path, method: :get, params: { category: "rocks"}, class: ["btn", "btn-secondary", "mt-2", "shadow-lg"]
+    .carousel-item
+      = image_tag "carousel3", class: %w[d-block w-100]
+      .carousel-caption.d-none.d-md-block
+        .h5 Boulders
+        .p Explore our largest stones.
+        = button_to "Shop Boulders", products_path, method: :get, params: { category: "boulders"}, class: ["btn", "btn-secondary", "mt-2", "shadow-lg"]
+  button.carousel-control-prev type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev"
+    span.carousel-control-prev-icon aria-hidden="true"
+    span.visually-hidden Previous
+  button.carousel-control-next type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next"
+    span.carousel-control-next-icon aria-hidden="true"
+    span.visually-hidden Next

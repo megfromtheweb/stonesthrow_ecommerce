@@ -11,13 +11,14 @@ h2.text-center.pb-5
               th # of Items
               th Total
               th Ordered At
+              th Status
           - @orders.each do |order|
               tr.data-row
                 td = link_to "Order ##{order.id}", order_path(order.id)
                 td = "#{order.total_quantity} items"
                 td = number_to_currency(order.total, locale: "en-GB")
                 td = order.created_at.strftime("%d/%m/%y %H:%M")
-    
+                td.text-capitalize = order.state
   - else
     h5
       | You currently have no orders

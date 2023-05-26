@@ -1,5 +1,10 @@
-h2
-  | Shop All 
+h2.text-capitalize.text-center.mb-3
+  = @title
+.d-flex.justify-content-center.pb-5
+  = button_to "All", products_path, method: :get, class: ["btn", "btn-secondary", "shadow-lg", "m-1"]
+  = button_to "Pebbles", products_path, method: :get, params: { category: "pebbles"}, class: ["btn", "btn-secondary", "shadow-lg", "m-1"]
+  = button_to "Rocks", products_path, method: :get, params: { category: "rocks"}, class: ["btn", "btn-secondary", "shadow-lg", "m-1"]
+  = button_to "Boulders", products_path, method: :get, params: { category: "boulders"}, class: ["btn", "btn-secondary", "shadow-lg", "m-1"]
 .row
   - @products.each do |product|
     .col-lg-3.col-md-4

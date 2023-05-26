@@ -2,11 +2,12 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  root "products#index"
+  root "products#showcase"
   resources :products, only: %i[
     index
     show
   ]
+
   resources :payments do
     get "success"
   end
