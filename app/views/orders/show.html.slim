@@ -11,10 +11,18 @@
               .card-body
                 h5.card-title.mb-3
                   = line_item.product.name
-                h6.card-subtitle.mb-2.text-muted
-                  = number_to_currency(line_item.product.price, locale: :"en-GB")
-                h6.card-subtitle.mb-2.text-muted
-                   = "Quantity: #{line_item.quantity}"
+                .row
+                  .col-3
+                    h6.card-subtitle.mb-2.text-muted Unit Price: 
+                    h6.card-subtitle.mb-2.text-muted Quantity: 
+                    h6.card-subtitle.mb-2.text-muted Subtotal: 
+                  .col-3
+                    h6.card-subtitle.mb-2.text-muted
+                      = number_to_currency(line_item.product.price, locale: :"en-GB")
+                    h6.card-subtitle.mb-2.text-muted
+                      = line_item.quantity
+                    h6.card-subtitle.mb-2.text-muted
+                      = number_to_currency(line_item.subtotal, locale: :"en-GB")
                 - if @order.editable?
                   .row.pt-4
                     .col-7
