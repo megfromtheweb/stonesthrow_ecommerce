@@ -13,6 +13,10 @@ class Order < ApplicationRecord
     order_line_items.map(&:quantity).sum
   end
 
+  def subtotal
+    order_line_items.map(&:subtotal).sum
+  end
+
   def editable?
     return true if state == "created"
 

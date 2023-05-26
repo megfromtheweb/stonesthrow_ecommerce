@@ -1,6 +1,6 @@
 
 .row
-  .col-md-6
+  .col-md-8
     - if @line_items.any?
       - @line_items.each do |line_item|
         .card.my-2.shadow-sm
@@ -28,10 +28,9 @@
                   h6.card-subtitle.mb-2.text-muted
                     = "SKU: #{line_item.product.sku}"
     - else
-      h5
+      h5.text-center
         | Your cart is empty
-  .col-md-6
+  .col-md-4
     .card.my-2.shadow-sm
       .card-body
-        h5.card-title.mb-2
-          | Overview
+        = render 'summary'

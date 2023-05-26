@@ -4,6 +4,6 @@ FactoryBot.define do
   factory :product do
     name { "Test product for testing things" }
     sku { "TT999" }
-    price { 100 }
+    price { 1.00 }
   end
 end

@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
                "Order ##{@order.id}"
              end
     @line_items = @order.order_line_items
+    @postage_fee = 0.75
   end
 
   def new; end

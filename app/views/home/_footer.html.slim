@@ -29,6 +29,8 @@ footer.row.row-cols-1.row-cols-sm-2.row-cols-md-5.py-5.my-5.border-top
         = link_to "My Saved Addresses", root_path, class: "nav-link p-0 text-muted"
       li.nav-item.mb-2
         = link_to "Account Settings", root_path, class: "nav-link p-0 text-muted"
+      li.nav-item.mb-2
+        = link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link p-0 text-muted"
   .col.mb-3
     h5 Products
     ul.nav.flex-column

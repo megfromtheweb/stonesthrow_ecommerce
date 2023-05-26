@@ -12,6 +12,6 @@ h2
             = number_to_currency(product.price, locale: :"en-GB")
           .row
             .col-xl-6
-              = button_to 'Options', product_path(product), class: ["btn", "btn-sm", "btn-outline-secondary", "border", "w-100"], type: "button"
+              = button_to 'Options', product_path(product.id), method: :get, class: ["btn", "btn-sm", "btn-outline-secondary", "border", "w-100"], type: "button"
             .col-xl-6
               = button_to 'Quick Add', order_path(@cart.id), method: :patch, params: { product_id: product.id, quantity: 1 }, class: ["btn", "btn-sm", "btn-outline-secondary", "border", "w-100"], type: "button"

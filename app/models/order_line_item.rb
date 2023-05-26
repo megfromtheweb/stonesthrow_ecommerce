@@ -4,6 +4,10 @@ class OrderLineItem < ApplicationRecord
   belongs_to :product
   belongs_to :order
 
+  def subtotal
+    quantity * product.price
+  end
+
   def increase_quantity(increment)
     update(quantity: quantity + increment.to_i)
   end

@@ -27,3 +27,8 @@ Feature: Cart
     When I click 'Cart (1)'
     And I click 'Remove from Cart'
     Then I see 'Your cart is empty'
+
+  Scenario: Order total in cart
+    Given there are items in my cart
+    When I click 'Cart (1)'
+    Then I see 'Total: £1.00'
