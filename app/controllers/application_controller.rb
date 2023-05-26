@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
 
     # TODO: drop empty orders periodically
   end
+
+  def clear_cart
+    session.delete(:cart_id)
+  end
 end

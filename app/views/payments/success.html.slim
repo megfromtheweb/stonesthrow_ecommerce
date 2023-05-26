@@ -1,5 +1,18 @@
-h2
-  | Thank you for your order
-h3
-  | Your order number is :
-  = @payment.order.id
+.px-4.pt-3.my-3.text-center.border-bottom
+  h1.fw-bold
+    | Thank you for your order
+  h2.text-muted
+    = "Order number ##{@order.id}"
+  .col-lg-6.mx-auto
+    p.lead.mb-4
+      | Your order is now being processed by our team and you will be notified of its dispatch within the next 2-3 business days.
+    p.lead.mb-4
+      | For any further enquiries about your order, please contact email.doesntexist@astonesthrow.com
+    .d-grid.gap-2.d-sm-flex.justify-content-sm-center.mb-5
+      = button_to "My Account", root_path, type:"button", class:"btn btn-primary btn-lg px-4 me-sm-3"
+      = button_to "Shop for more!", products_path, type:"button", class:"btn btn-outline-secondary btn-lg px-4"
+  .overflow-hidden style="max-height: 30vh;"
+    .container.px-5
+      = image_tag "product", class: 'img-fluid border rounded-3 shadow-lg mb-4', width:700, height: 500, loading: "lazy"
+
+        / <img src="bootstrap-docs.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">

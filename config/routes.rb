@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     update
   ]
 
+  resources :orders do
+    post "checkout"
+  end
+
   resources :order_line_items do
     put "increment"
     put "decrement"

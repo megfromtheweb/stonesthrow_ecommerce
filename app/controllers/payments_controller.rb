@@ -3,5 +3,7 @@
 class PaymentsController < ApplicationController
   def create; end
 
-  def success; end
+  def success
+    @order = Order.find(params[:payment_id])
+  end
 end

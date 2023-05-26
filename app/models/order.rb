@@ -17,6 +17,10 @@ class Order < ApplicationRecord
     order_line_items.map(&:subtotal).sum
   end
 
+  def update_total(postage_fee)
+    update(total: subtotal + postage_fee)
+  end
+
   def editable?
     return true if state == "created"
 
