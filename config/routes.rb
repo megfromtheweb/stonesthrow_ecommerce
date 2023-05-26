@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   resources :orders do
     post "checkout"
+    put "packed"
+    put "dispatched"
   end
 
   resources :order_line_items do

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
-  before_action :find_order, only: %i[show update checkout]
+  before_action :find_order, only: %i[show update checkout packed dispatched]
   before_action :find_line_item, only: :update
 
   def index
@@ -35,6 +35,16 @@ class OrdersController < ApplicationController
     @order.update_total(0.75)
     clear_cart
     redirect_to payment_success_path(@order.id)
+  end
+
+  def packed
+    @order.packed!
+    redirect_back(fallback_location: order_path(@order.id))
+  end
+
+  def dispatched
+    @order.dispatched!
+    redirect_back(fallback_location: order_path(@order.id))
   end
 
   private

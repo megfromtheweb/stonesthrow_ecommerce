@@ -1,21 +1,48 @@
 h4.card-title.mb-5.text-center
   | Order Summary
-- if @order.editable?
-  .row
-    .col-1
-    .col-10
+.row
+  .col-1
+  .col-10
+    .row.mb-5
+      .col-6
+        p Subtotal: 
+        p Postage:
+        p.fw-bold Total:
+      .col-6
+        p.text-end
+          = number_to_currency(@order.subtotal, locale: "en-GB")
+        p.text-end
+          = number_to_currency(@postage_fee, locale: "en-GB")
+        p.text-end.fw-bold
+          = number_to_currency(@order.subtotal + @postage_fee, locale: "en-GB")
+    - if @order.editable? && @order.order_line_items.any?
+      = button_to "Proceed to Checkout", order_checkout_path(@order.id), class: ["btn", "btn-outline-secondary", "w-100"]
+    - elsif @order.order_line_items.any?
+      .row.mb-5
+        h5.card-subtitle.text-center.mb-3
+          | Customer Details
+        p.text-center
+          span.fw-bold
+            | Meg Goffin
+          br
+          | Adastral Park
+          br
+          | Barrack Square, Martlesham Heath
+          br
+          | Martlesham, Ipswich
+          br
+          | IP5 3RE
       .row.mb-5
         .col-6
-          p Subtotal: 
-          p Postage:
-          p.fw-bold Total:
+          p Current status:
         .col-6
-          p.text-end
-            = number_to_currency(@order.subtotal, locale: "en-GB")
-          p.text-end
-            = number_to_currency(@postage_fee, locale: "en-GB")
-          p.text-end.fw-bold
-            = number_to_currency(@order.subtotal + @postage_fee, locale: "en-GB")
-      = button_to "Proceed to Checkout", order_checkout_path(@order.id), class: ["btn", "btn-outline-secondary", "w-100"]
-    .col-1
+          p.text-capitalize.fw-bold.text-end
+            = @order.state
+        - if @order.paid?
+          = button_to "Mark as Packed", order_packed_path(@order.id), method: :put, class: ["btn", "btn-outline-secondary", "w-100"]
+        - if @order.packed?
+          = button_to "Mark as Dispatched", order_dispatched_path(@order.id), method: :put, class: ["btn", "btn-outline-secondary", "w-100"]
+  .col-1
+
+  
   
