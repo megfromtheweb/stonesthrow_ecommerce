@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   before_action :find_line_item, only: :update
 
   def index
+    @title = "Orders"
     @orders = Order.ordered
   end
 
