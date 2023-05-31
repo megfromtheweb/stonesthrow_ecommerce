@@ -5,12 +5,16 @@ class ApplicationController < ActionController::Base
 
   def cart
     if session[:cart_id]
-      @cart = Order.find(session[:cart_id])
+      if Order.find_by_id(session[:cart_id])
+        @cart = Order.find(session[:cart_id])
+      else
+        @cart = Order.create
+        session[:cart_id] = @cart.id
+      end
     else
       @cart = Order.create
       session[:cart_id] = @cart.id
     end
-
     # TODO: drop empty orders periodically
   end
 
