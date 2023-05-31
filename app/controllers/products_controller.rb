@@ -2,9 +2,9 @@
 
 class ProductsController < ApplicationController
   def index
-    if params[:category]
-      @title = "Shop #{params[:category]}"
-      @products = Product.send(params[:category])
+    if category.present?
+      @title = "Shop #{category}"
+      @products = Product.where(category: category)
     else
       @title = "Shop All"
       @products = Product.all
@@ -18,5 +18,11 @@ class ProductsController < ApplicationController
 
   def showcase
     @title = "Home"
+  end
+
+  private 
+  
+  def category
+    params.permit(:category)[:category]
   end
 end
