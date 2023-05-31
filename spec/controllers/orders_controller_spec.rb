@@ -73,7 +73,7 @@ describe OrdersController do
       let(:line_item) { create(:order_line_item, order_id: created_order.id, product_id: order_product.id) }
 
       it 'updates order quantity' do
-        expect { subject }.to change { line_item.quantity }.from(1).to(2)
+        expect { subject }.to change { line_item.reload.quantity }.from(1).to(2)
       end
     end
   end

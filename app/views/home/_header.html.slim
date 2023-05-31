@@ -35,10 +35,10 @@ header
                         edit_user_registration_path,
                         class: ['nav-link', 'px-3']
             li.nav-item
-              = link_to "Log out",
+              = button_to "Log out",
                         destroy_user_session_path,
                         method: :delete,
-                        class: ['nav-link', 'px-3']
+                        class: ['nav-link', 'px-3', 'bg-transparent', 'border-0']
           - elsif current_page?(user_session_path)
           - else
             li.nav-item

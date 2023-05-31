@@ -34,14 +34,12 @@ describe Order do
     describe "destroy_if_zero" do
       it "does nothing if quantity is larger than 0" do
         test_line_item = create(:order_line_item, order_id: test_order.id, product_id: test_product.id, quantity: 2)
-        test_line_item.destroy_if_zero
-        expect { test_line_item.reload }.not_to raise_error(ActiveRecord::RecordNotFound)
+        expect { test_line_item.destroy_if_zero }.to_not change { test_order.order_line_items.count }
       end
 
       it "destroy item if quantity is not larger than 0" do
         test_line_item = create(:order_line_item, order_id: test_order.id, product_id: test_product.id, quantity: 0)
-        test_line_item.destroy_if_zero
-        expect { test_line_item.reload }.to raise_error(ActiveRecord::RecordNotFound)
+        expect { test_line_item.destroy_if_zero }.to change { test_order.order_line_items.count }
       end
     end
   end

@@ -22,8 +22,6 @@ class Order < ApplicationRecord
   end
 
   def editable?
-    return true if state == "created"
-
-    false
+    state == "created"
   end
 end
