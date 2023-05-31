@@ -5,4 +5,10 @@ class Product < ApplicationRecord
   has_many :orders, through: :order_line_items
 
   enum(category: { uncategorised: 0, pebbles: 1, rocks: 2, boulders: 3 })
+
+  scope :in_stock, -> { where("quantity > 0") }
+
+  def decrease_quantity(decrement)
+    update(quantity: quantity - decrement.to_i)
+  end
 end

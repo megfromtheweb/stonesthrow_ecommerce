@@ -9,5 +9,5 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 20.times do |i|
-  Product.create(name: "Product #{i}", sku: "ST00#{i}", price: 2.00)
+  Product.create(name: "Product #{i}", sku: "ST00#{i}", price: 2.00, quantity:i)
 end

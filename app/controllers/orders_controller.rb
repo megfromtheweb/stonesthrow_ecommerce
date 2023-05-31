@@ -33,6 +33,9 @@ class OrdersController < ApplicationController
   def checkout
     @order.paid!
     @order.update_total(0.75)
+    @order.order_line_items.each do |product|
+      Product.find(product.product_id).decrease_quantity(product.quantity)
+    end
     clear_cart
     redirect_to payment_success_path(@order.id)
   end

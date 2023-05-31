@@ -4,10 +4,10 @@ class ProductsController < ApplicationController
   def index
     if category.present?
       @title = "Shop #{category}"
-      @products = Product.where(category: category)
+      @products = Product.in_stock.where(category: category)
     else
       @title = "Shop All"
-      @products = Product.all
+      @products = Product.in_stock
     end
   end
 
