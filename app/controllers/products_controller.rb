@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product = Product.find(id)
     @title = Product.name
   end
 
@@ -46,6 +46,10 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :sku, :price, :quantity)
+  end
+
+  def id
+    params.permit(:id)[:id]
   end
   
   def category

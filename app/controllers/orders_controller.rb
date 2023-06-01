@@ -23,9 +23,9 @@ class OrdersController < ApplicationController
 
   def update
     if @line_item
-      @line_item.increase_quantity(params[:quantity])
+      @line_item.increase_quantity(quantity)
     else
-      @order.order_line_items.create(product_id: params[:product_id], quantity: params[:quantity])
+      @order.order_line_items.create(product_id: product_id, quantity: quantity)
     end
     redirect_back(fallback_location: order_path(cart.id))
   end
@@ -52,15 +52,27 @@ class OrdersController < ApplicationController
 
   private
 
-  def order_params
-    params.permit(:product_id, :quantity)
+  def id
+    params.permit(:id)[:id]
+  end
+  
+  def order_id
+    params.permit(:order_id)[:order_id]
+  end
+
+  def product_id
+    params.permit(:product_id)[:product_id]
+  end
+
+  def quantity
+    params.permit(:quantity)[:quantity]
   end
 
   def find_order
-    @order = Order.find(params[:order_id] || params[:id])
+    @order = Order.find(order_id || id)
   end
 
   def find_line_item
-    @line_item = @order.order_line_items.find_by(product_id: params[:product_id])
+    @line_item = @order.order_line_items.find_by(product_id: product_id)
   end
 end
