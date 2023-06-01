@@ -1,0 +1,33 @@
+= form_with(model: @product) do |form|
+  .field.mb-3
+    .input-group
+      = form.label :name, class:"input-group-text"
+      = form.text_field :name, class: "form-control"
+    - @product.errors.full_messages_for(:name).each do |message|
+      .text-danger
+        = message
+  .field.mb-3
+    .input-group
+      = form.label :sku, class:"input-group-text text-uppercase"
+      = form.text_field :sku, class: "form-control"
+    - @product.errors.full_messages_for(:sku).each do |message|
+      .text-danger
+        = message
+  .field.mb-3
+    .input-group
+      = form.label :price, class:"input-group-text"
+      = form.number_field :price, class: "form-control", step: 0.01
+    - @product.errors.full_messages_for(:price).each do |message|
+      .text-danger
+        = message
+  .field.mb-3
+    .input-group
+      = form.label :quantity, class:"input-group-text"
+      = form.number_field :quantity, class: "form-control"
+    - @product.errors.full_messages_for(:quantity).each do |message|
+      .text-danger
+        = message
+  .actions.d-flex.justify-content-center
+    = form.submit class: ["btn", "btn-secondary", "m-3"]
+    = link_to 'Back', listings_path, class: ["btn", "btn-secondary", "m-3"]
+

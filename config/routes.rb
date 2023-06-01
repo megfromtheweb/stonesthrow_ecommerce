@@ -4,9 +4,15 @@ Rails.application.routes.draw do
   devise_for :users
   root "products#showcase"
   resources :products, only: %i[
+    new
+    create
+    edit
+    update
     index
     show
   ]
+  get '/listings', to: 'products#listings', as: 'listings'
+
 
   resources :payments do
     get "success"

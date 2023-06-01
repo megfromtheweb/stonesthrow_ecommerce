@@ -1,0 +1,26 @@
+h2.text-center.pb-5
+  = @title
+.d-flex.justify-content-center.pb-3
+  = link_to "New Listing", new_product_path, class: ["btn", "btn-secondary", "shadow-lg"]
+.row
+  - if @products.any?
+    .table-responsive
+      table.table.table-hover.table-light.table-sm.table-fixed
+        tbody
+          thead
+            tr
+              th SKU
+              th Name
+              th Price
+              th Quantity
+              th
+          - @products.each do |product|
+              tr.data-row
+                td = link_to "#{product.sku}", product_path(product.id)
+                td = product.name
+                td = number_to_currency(product.price, locale: "en-GB")
+                td = product.quantity
+                td = button_to "Edit", edit_product_path(product), class: "btn btn-sm btn-secondary w-100"
+  - else
+    h5
+      | You currently have no products listed

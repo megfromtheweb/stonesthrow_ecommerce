@@ -8,6 +8,21 @@ class Product < ApplicationRecord
 
   scope :in_stock, -> { where("quantity > 0") }
 
+  validates :name, presence: { message: "can't be blank" },
+                   uniqueness: true,
+                   length: { maximum: 128 }
+
+  validates :sku, presence: { message: "can't be blank"},
+                  uniqueness: true,
+                  length: { maximum: 128 }
+  
+  validates :price, presence: { message: "can't be blank"},
+                    numericality: { greater_than: 0 }
+
+  validates :quantity, presence: { message: "can't be blank"},
+                       numericality: { greater_than_or_equal_to: 0 }
+
+
   def decrease_quantity(decrement)
     update(quantity: quantity - decrement.to_i)
   end
