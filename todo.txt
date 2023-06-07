@@ -1,0 +1,25 @@
+
+
+- Popover for price on cart hover S
+- Favicon S
+- Current year copyright (expand) S
+- Actual Product Images M
+- Vat S
+- Product pagination M
+- Attach user to order S
+- Auth users on order show S
+- Lock orders behind admin user S
+- Workflow view with product M
+- Packing slip generation M
+- Order needs ‘ordered at’ field from timestamps S
+- Clear empty baskets cron job L
+- View your orders as a user M
+- Fix responsive layout (for Samsung s20) M
+- Contact us form? S
+
+
+
+
+LATER
+
+- Product Search L

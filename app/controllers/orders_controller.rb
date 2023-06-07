@@ -31,13 +31,24 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    @order.paid!
-    @order.update_total(0.75)
-    @order.order_line_items.each do |product|
-      Product.find(product.product_id).decrease_quantity(product.quantity)
-    end
-    clear_cart
-    redirect_to payment_success_path(@order.id)
+    # @order.paid!
+    # @order.update_total(0.75)
+    # @order.order_line_items.each do |product|
+    #   Product.find(product.product_id).decrease_quantity(product.quantity)
+    # end
+    # clear_cart
+    # redirect_to payment_success_path(@order.id)
+    @line_items = @order.order_line_items
+    @postage_fee = 0.75
+    @total = @order.subtotal + @postage_fee
+    @intent = Stripe::PaymentIntent.create({
+      amount: ((@total) * 100).to_i,
+      currency: 'gbp',
+      automatic_payment_methods: {
+        enabled: true,
+      }
+    })
+
   end
 
   def packed

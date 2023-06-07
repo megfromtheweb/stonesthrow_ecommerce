@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   ]
 
   resources :orders do
-    post "checkout"
+    get "checkout"
     put "packed"
     put "dispatched"
   end

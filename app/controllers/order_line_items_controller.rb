@@ -4,12 +4,12 @@ class OrderLineItemsController < ApplicationController
   before_action :find_line_item
 
   def increment
-    @line_item.increase_quantity(increment)
+    @line_item.increase_quantity(increment_param)
     redirect_back(fallback_location: order_path(cart.id))
   end
 
   def decrement
-    @line_item.decrease_quantity(decrement)
+    @line_item.decrease_quantity(decrement_param)
     @line_item.destroy_if_zero
     redirect_back(fallback_location: order_path(cart.id))
   end
@@ -29,11 +29,11 @@ class OrderLineItemsController < ApplicationController
     params.permit(:order_line_item_id)[:order_line_item_id]
   end
 
-  def increment
+  def increment_param
     params.permit(:increment)[:increment]
   end
 
-  def decrement
+  def decrement_param
     params.permit(:decrement)[:decrement]
   end
 

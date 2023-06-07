@@ -16,7 +16,7 @@ h4.card-title.mb-5.text-center
         p.text-end.fw-bold
           = number_to_currency(@order.subtotal + @postage_fee, locale: "en-GB")
     - if @order.editable? && @order.order_line_items.any?
-      = button_to "Proceed to Checkout", order_checkout_path(@order.id), class: ["btn", "btn-outline-secondary", "w-100"]
+      = link_to "Proceed to Checkout", order_checkout_path(@order), class: ["btn", "btn-outline-secondary", "w-100"]
     - elsif @order.order_line_items.any?
       .row.mb-5
         h5.card-subtitle.text-center.mb-3

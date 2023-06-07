@@ -1,0 +1,37 @@
+h4.text-center.pb-3 Please enter your details
+
+form action="/submissions" method="post" id="payment-form"
+  input type="hidden" name="client_secret" value="#{@intent.client_secret}"
+  input type="hidden" name="authenticity_token" value="#{form_authenticity_token}"
+
+  .field.pb-2
+    #address-element
+  
+  .field.pb-2
+    #payment-element
+
+  input type="submit" value="Pay #{number_to_currency(@total, locale: 'en-GB')}" class = "btn btn-secondary w-100 mt-3"
+
+javascript:
+  const stripe = Stripe('pk_test_51N4PSQC5kweBrNcIAP4Ti8MvmDzTfPSzwKC8EkLvA7Y88wSTcoBCleqg9kVIbIey9BcgIgt43UgrQY1kbALnuXoy00tI6eeaTX');
+
+  const clientSecret = document.getElementsByName("client_secret")[0].value;
+  const appearance = { /* appearance */ };
+  const addressOptions = { mode: 'shipping' };
+  const elements = stripe.elements({ clientSecret, appearance });
+  const addressElement = elements.create('address', addressOptions);
+  addressElement.mount('#address-element');
+  const paymentElement = elements.create('payment');
+  paymentElement.mount('#payment-element');
+  const form = document.querySelector("#payment-form")
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault()
+    elements.submit()
+    await stripe.confirmPayment ({
+      elements: elements,
+      confirmParams: {
+        shipping: addressElement,
+        return_url: `${window.location}`
+      },
+    });
+  });
