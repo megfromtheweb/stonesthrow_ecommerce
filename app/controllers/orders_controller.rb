@@ -5,6 +5,8 @@ class OrdersController < ApplicationController
   before_action :find_line_item, only: :update
 
   def index
+    return not_found unless current_user && current_user.is_admin?
+
     @title = "Orders"
     @orders = Order.ordered
   end
@@ -52,11 +54,15 @@ class OrdersController < ApplicationController
   end
 
   def packed
+    return not_found unless current_user && current_user.is_admin?
+
     @order.packed!
     redirect_back(fallback_location: order_path(@order.id))
   end
 
   def dispatched
+    return not_found unless current_user && current_user.is_admin?
+
     @order.dispatched!
     redirect_back(fallback_location: order_path(@order.id))
   end

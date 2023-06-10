@@ -16,14 +16,15 @@ header
             = link_to 'Shop All',
               products_path,
               class: ['nav-link', 'px-3']
-          li.nav-item
-            = link_to "Orders",
-              orders_path,
-              class: ['nav-link', 'px-3']
-          li.nav-item
-            = link_to "Listings",
-              listings_path,
-              class: ['nav-link', 'px-3']    
+          - if current_user && current_user.is_admin?
+            li.nav-item
+              = link_to "Orders",
+                orders_path,
+                class: ['nav-link', 'px-3']
+            li.nav-item
+              = link_to "Listings",
+                listings_path,
+                class: ['nav-link', 'px-3']    
       .mx-auto.order-0
         button.navbar-toggler type="button" data-bs-toggle="collapse" data-bs-target=".dual-collapse2" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
           span.navbar-toggler-icon

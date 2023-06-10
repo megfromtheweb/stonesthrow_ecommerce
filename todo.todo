@@ -7,6 +7,7 @@
 ☐ - Attach user to order S
 ☐ - Auth users on order show S
 ☐ - Lock orders behind admin user S
+☐ - Email customer on order M
 ☐ - Workflow view with product M
 ☐ - Packing slip generation M
 ☐ - Order needs "ordered at" field from timestamps S

@@ -12,6 +12,8 @@ class ProductsController < ApplicationController
   end
 
   def new
+    return not_found unless current_user && current_user.is_admin?
+
     @title = "New Listing"
     @product = Product.new
   end
@@ -38,6 +40,9 @@ class ProductsController < ApplicationController
   end
 
   def listings
+    return not_found unless current_user && current_user.is_admin?
+
+
     @products = Product.all
     @title = "Listings"
   end
