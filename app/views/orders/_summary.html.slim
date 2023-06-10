@@ -6,11 +6,14 @@ h4.card-title.mb-5.text-center
     .row.mb-5
       .col-6
         p Subtotal: 
+        p Included VAT:
         p Postage:
         p.fw-bold Total:
       .col-6
         p.text-end
           = number_to_currency(@order.subtotal, locale: "en-GB")
+        p.text-end
+          = number_to_currency((@order.subtotal)*0.2, locale: "en-GB")
         p.text-end
           = number_to_currency(@postage_fee, locale: "en-GB")
         p.text-end.fw-bold

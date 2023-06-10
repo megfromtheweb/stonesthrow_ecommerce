@@ -1,0 +1,24 @@
+✔ - Popover for price on cart hover S @done (08/06/2023, 09:19:30)
+☐ - Favicon S
+✔ - Current year copyright (dynamic) S @done (08/06/2023, 09:47:34)
+☐ - Actual Product Images M
+✔ - Vat S @done (08/06/2023, 09:51:06)
+☐ - Product pagination M
+☐ - Attach user to order S
+☐ - Auth users on order show S
+☐ - Lock orders behind admin user S
+☐ - Workflow view with product M
+☐ - Packing slip generation M
+☐ - Order needs "ordered at" field from timestamps S
+☐ - Clear empty baskets cron job L
+☐ - View your orders as a user M
+☐ - Fix responsive layout (for Samsung s20) M
+☐ - Contact us form? S
+☐ - Styling for additional devise views S
+
+
+
+
+LATER
+
+☐ - Product Search L
