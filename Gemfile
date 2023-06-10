@@ -94,3 +94,5 @@ group :test do
 end
 
 gem "cssbundling-rails", "~> 1.1"
+
+gem "image_processing", "~> 1.12"

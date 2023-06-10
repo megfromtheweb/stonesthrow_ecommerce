@@ -1,7 +1,10 @@
 .row
   .col-md-6
     .
-      = image_tag "product", class: ['w-100', 'rounded']
+      - if @product.images.any?
+        = carousel_for(@product.images)
+      - else
+        = image_tag 'product', class: ['w-100', 'rounded']
   .col-md-6
     h1
       = @product.name

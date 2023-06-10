@@ -27,6 +27,13 @@
     - @product.errors.full_messages_for(:quantity).each do |message|
       .text-danger
         = message
+  .field.mb-3
+    .input-group
+      = form.label :images, class:"input-group-text"
+      = form.file_field :images, multiple: true, data: {"direct-upload-url":"#{rails_direct_uploads_url}"},  name: "product[images]", class: "form-control"
+    - @product.errors.full_messages_for(:images).each do |message|
+      .text-danger
+        = message
   .actions.d-flex.justify-content-center
     = form.submit class: ["btn", "btn-secondary", "m-3"]
     = link_to 'Back', listings_path, class: ["btn", "btn-secondary", "m-3"]

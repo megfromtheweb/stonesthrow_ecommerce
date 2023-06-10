@@ -4,10 +4,10 @@ class ProductsController < ApplicationController
   def index
     if category.present?
       @title = "Shop #{category}"
-      @products = Product.in_stock.where(category: category)
+      @products = Product.in_stock.where(category: category).with_attached_images
     else
       @title = "Shop All"
-      @products = Product.in_stock
+      @products = Product.in_stock.with_attached_images
     end
   end
 
@@ -20,6 +20,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.create(product_params)
+    @product.images.attach(product_params[:images])
 
     if @product.valid?
       respond_to do |format|
@@ -50,7 +51,7 @@ class ProductsController < ApplicationController
   private 
 
   def product_params
-    params.require(:product).permit(:name, :sku, :price, :quantity)
+    params.require(:product).permit(:name, :sku, :price, :quantity, :images)
   end
 
   def id

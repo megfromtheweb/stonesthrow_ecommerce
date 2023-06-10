@@ -9,7 +9,10 @@ h2.text-capitalize.text-center.mb-3
   - @products.each do |product|
     .col-lg-3.col-md-4
       .card.my-2.shadow-sm
-        = image_tag "product", class: 'card-img-top'
+        - if product.images.any?
+          = image_tag product.images[0], class: 'card-img-top'
+        -else
+          = image_tag "product", class: 'card-img-top'
         .card-body
           h5.card-title.mb-2
             = product.name

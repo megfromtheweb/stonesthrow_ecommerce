@@ -6,7 +6,7 @@
 ☐ - Product pagination M
 ☐ - Attach user to order S
 ☐ - Auth users on order show S
-☐ - Lock orders behind admin user S
+✔ - Lock orders behind admin user S @done (10/06/2023, 13:35:53)
 ☐ - Email customer on order M
 ☐ - Workflow view with product M
 ☐ - Packing slip generation M
