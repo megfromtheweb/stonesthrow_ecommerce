@@ -1,42 +1,6 @@
 .row
   .col-md-8
-    - if @line_items.any?
-      - @line_items.each do |line_item|
-        .card.my-2.shadow-sm
-          .row
-            .col-4
-              = image_tag "product", class: 'img-fluid rounded-start'
-            .col-8
-              .card-body
-                h5.card-title.mb-3
-                  = line_item.product.name
-                .row
-                  .col-3
-                    h6.card-subtitle.mb-2.text-muted Unit Price: 
-                    h6.card-subtitle.mb-2.text-muted Quantity: 
-                    h6.card-subtitle.mb-2.text-muted Subtotal: 
-                  .col-3
-                    h6.card-subtitle.mb-2.text-muted
-                      = number_to_currency(line_item.product.price, locale: :"en-GB")
-                    h6.card-subtitle.mb-2.text-muted
-                      = line_item.quantity
-                    h6.card-subtitle.mb-2.text-muted
-                      = number_to_currency(line_item.subtotal, locale: :"en-GB")
-                - if @order.editable?
-                  .row.pt-4
-                    .col-7
-                      = button_to "Remove from Cart", order_line_item_path(line_item), method: :delete, class: "btn btn-danger"
-                    .col
-                      .input-group
-                        = button_to "-", order_line_item_decrement_path(line_item), method: :put, params: { decrement: 1 }, class: "btn btn-outline-secondary"
-                        = content_tag(:input, nil, type: "text", placeholder: "#{line_item.quantity}", disabled: true, class: "form-control")
-                        = button_to "+", order_line_item_increment_path(line_item), method: :put, params: { increment: 1 }, class: "btn btn-outline-secondary"
-                - else
-                  h6.card-subtitle.mb-2.text-muted
-                    = "SKU: #{line_item.product.sku}"
-    - else
-      h5.text-center
-        | Your cart is empty
+    = render 'order_items'
   .col-md-4
     .card.my-2.shadow-sm
       .card-body

@@ -1,7 +1,10 @@
 ✔ - Popover for price on cart hover S @done (08/06/2023, 09:19:30)
 ☐ - Favicon S
+☐ - improve test coverage M
+☐ - customer can't add of an item than is in stock S
 ✔ - Current year copyright (dynamic) S @done (08/06/2023, 09:47:34)
-☐ - Actual Product Images M
+✔ - Actual Product Images M @done (10/06/2023, 16:56:27)
+☐ - image upload only uploading one file using twice bug S
 ✔ - Vat S @done (08/06/2023, 09:51:06)
 ☐ - Product pagination M
 ☐ - Attach user to order S
