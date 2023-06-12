@@ -34,7 +34,7 @@ describe Order do
     describe "destroy_if_zero" do
       it "does nothing if quantity is larger than 0" do
         test_line_item = create(:order_line_item, order_id: test_order.id, product_id: test_product.id, quantity: 2)
-        expect { test_line_item.destroy_if_zero }.to_not change { test_order.order_line_items.count }
+        expect { test_line_item.destroy_if_zero }.not_to change { test_order.order_line_items.count }
       end
 
       it "destroy item if quantity is not larger than 0" do

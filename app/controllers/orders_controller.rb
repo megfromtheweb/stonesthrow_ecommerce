@@ -5,22 +5,22 @@ class OrdersController < ApplicationController
   before_action :find_line_item, only: :update
 
   def index
-    return not_found unless current_user && current_user.is_admin?
+    return not_found unless current_user&.is_admin?
 
     if state.present?
       @title = "#{state} orders".titleize
       @orders = Order
-        .where(state: state)
-        .ordered
-        .page(page_params)
-        .per(40)
+                .where(state: state)
+                .ordered
+                .page(page_params)
+                .per(40)
       @state = state
     else
       @title = "Orders"
       @orders = Order
-        .ordered
-        .page(page_params)
-        .per(40)
+                .ordered
+                .page(page_params)
+                .per(40)
     end
   end
 
@@ -57,24 +57,23 @@ class OrdersController < ApplicationController
     @postage_fee = 0.75
     @total = @order.subtotal + @postage_fee
     @intent = Stripe::PaymentIntent.create({
-      amount: ((@total) * 100).to_i,
-      currency: 'gbp',
-      automatic_payment_methods: {
-        enabled: true,
-      }
-    })
-
+                                             amount: (@total * 100).to_i,
+                                             currency: "gbp",
+                                             automatic_payment_methods: {
+                                               enabled: true
+                                             }
+                                           })
   end
 
   def packed
-    return not_found unless current_user && current_user.is_admin?
+    return not_found unless current_user&.is_admin?
 
     @order.packed!
     redirect_back(fallback_location: order_path(@order.id))
   end
 
   def dispatched
-    return not_found unless current_user && current_user.is_admin?
+    return not_found unless current_user&.is_admin?
 
     @order.dispatched!
     redirect_back(fallback_location: order_path(@order.id))
@@ -89,11 +88,11 @@ class OrdersController < ApplicationController
   def state
     params.permit(:state)[:state]
   end
-  
+
   def id
     params.permit(:id)[:id]
   end
-  
+
   def order_id
     params.permit(:order_id)[:order_id]
   end

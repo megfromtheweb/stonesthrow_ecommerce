@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def cart
     if session[:cart_id]
-      if Order.find_by_id(session[:cart_id])
+      if Order.find_by(id: session[:cart_id])
         @cart = Order.find(session[:cart_id])
       else
         @cart = Order.create
@@ -15,16 +15,16 @@ class ApplicationController < ActionController::Base
       @cart = Order.create
       session[:cart_id] = @cart.id
     end
-    # TODO: drop empty orders periodically
   end
+    # TODO: drop empty orders periodically
 
   def clear_cart
     session.delete(:cart_id)
   end
 
   def not_found
-    raise ActionController::RoutingError.new('Not Found')
-  rescue
+    raise ActionController::RoutingError, "Not Found"
+  rescue StandardError
     render_404
   end
 

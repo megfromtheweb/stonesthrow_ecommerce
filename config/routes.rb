@@ -12,9 +12,7 @@ Rails.application.routes.draw do
     show
   ]
 
-  get '/listings', to: 'products#listings', as: 'listings'
-  
-
+  get "/listings", to: "products#listings", as: "listings"
 
   resources :payments do
     get "success"

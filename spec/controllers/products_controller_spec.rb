@@ -5,7 +5,7 @@ require "rails_helper"
 describe ProductsController do
   let(:primary_product) { create(:product) }
   let(:secondary_product) { create(:product) }
-  let(:pebble) { create(:product, category: 'pebbles')}
+  let(:pebble) { create(:product, category: "pebbles") }
 
   describe "GET index" do
     it "gets all products" do
@@ -14,12 +14,12 @@ describe ProductsController do
     end
 
     it "gets all pebbles" do
-      get :index, params: { category: 'pebbles' }
+      get :index, params: { category: "pebbles" }
       expect(assigns[:products]).to include(pebble)
     end
-    
+
     it "doesnt gets non pebbles" do
-      get :index, params: { category: 'pebbles' }
+      get :index, params: { category: "pebbles" }
       expect(assigns[:products]).not_to include(primary_product)
     end
   end
