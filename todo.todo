@@ -14,9 +14,9 @@
 ☐ - Auth users on order show S
 ✔ - Lock orders behind admin user S @done (10/06/2023, 13:35:53)
 ☐ - Email customer on order M
-☐ - Workflow view with product M
+☐ - Workflow view with product M * save for write up
 ☐ - Packing slip generation M
-☐ - Order needs "ordered at" field from timestamps S
+✔ - Order needs "ordered at" field from timestamps S @done (12/06/2023, 11:02:30)
 ☐ - Clear empty baskets cron job L
 ☐ - View your orders as a user M
 ☐ - Fix responsive layout (for Samsung s20) M
