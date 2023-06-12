@@ -9,3 +9,13 @@ body{
   --bs-tooltip-padding-x: 1rem;
   --bs-tooltip-padding-y: 1rem;
 }
+
+.pagination{
+  .page-item{
+    --bs-pagination-color: var(--bs-secondary);
+    --bs-pagination-active-border-color: var(--bs-white);
+    --bs-pagination-active-bg: var(--bs-secondary);
+    --bs-pagination-active-color: var(--bs-white);
+    --bs-pagination-hover-color: var(--bs-black);
+  }
+}

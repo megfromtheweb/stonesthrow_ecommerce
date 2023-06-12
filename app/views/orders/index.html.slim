@@ -1,5 +1,7 @@
 h2.text-center.pb-5
   | Orders
+.d-flex.justify-content-center.pb-3
+  = paginate @orders
 .row
   - if @orders.any?
     .table-responsive
@@ -22,3 +24,5 @@ h2.text-center.pb-5
   - else
     h5
       | You currently have no orders
+.d-flex.justify-content-center.pb-3
+  = paginate @orders

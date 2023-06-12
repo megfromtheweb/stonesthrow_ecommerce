@@ -2,6 +2,8 @@ h2.text-center.pb-5
   = @title
 .d-flex.justify-content-center.pb-3
   = link_to "New Listing", new_product_path, class: ["btn", "btn-secondary", "shadow-lg"]
+.d-flex.justify-content-center.pb-3
+  = paginate @products
 .row
   - if @products.any?
     .table-responsive
@@ -24,3 +26,5 @@ h2.text-center.pb-5
   - else
     h5
       | You currently have no products listed
+.d-flex.justify-content-center.pb-3
+  = paginate @products

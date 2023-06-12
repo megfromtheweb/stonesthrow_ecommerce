@@ -96,3 +96,5 @@ end
 gem "cssbundling-rails", "~> 1.1"
 
 gem "image_processing", "~> 1.12"
+
+gem "kaminari", "~> 1.2"

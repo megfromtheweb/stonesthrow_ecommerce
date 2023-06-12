@@ -4,10 +4,17 @@ class ProductsController < ApplicationController
   def index
     if category.present?
       @title = "Shop #{category}"
-      @products = Product.in_stock.where(category: category).with_attached_images
+      @products = Product
+        .in_stock
+        .where(category: category)
+        .with_attached_images
+        .page(page_params)
     else
       @title = "Shop All"
-      @products = Product.in_stock.with_attached_images
+      @products = Product
+        .in_stock
+        .with_attached_images
+        .page(page_params)
     end
   end
 
@@ -44,7 +51,10 @@ class ProductsController < ApplicationController
     return not_found unless current_user && current_user.is_admin?
 
 
-    @products = Product.all
+    @products = Product
+      .all
+      .page(page_params)
+      .per(40)
     @title = "Listings"
   end
 
@@ -52,6 +62,10 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :sku, :price, :quantity, :images)
+  end
+
+  def page_params
+    params.permit(:page)[:page]
   end
 
   def id

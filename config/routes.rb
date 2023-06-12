@@ -7,11 +7,13 @@ Rails.application.routes.draw do
     new
     create
     edit
-    update
     index
+    update
     show
   ]
+
   get '/listings', to: 'products#listings', as: 'listings'
+  
 
 
   resources :payments do

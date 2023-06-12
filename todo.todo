@@ -1,12 +1,15 @@
 ✔ - Popover for price on cart hover S @done (08/06/2023, 09:19:30)
 ☐ - Favicon S
 ☐ - improve test coverage M
-☐ - customer can't add of an item than is in stock S
+☐ - sort by price sort by newest - S
+☐ - orders page filter by status - S 
+☐ - customer can't add more of an item than is in stock S
 ✔ - Current year copyright (dynamic) S @done (08/06/2023, 09:47:34)
 ✔ - Actual Product Images M @done (10/06/2023, 16:56:27)
 ☐ - image upload only uploading one file using twice bug S
 ✔ - Vat S @done (08/06/2023, 09:51:06)
-☐ - Product pagination M
+✔ - Product pagination M @done (11/06/2023, 13:38:44)
+✔ - Styling fix on pagination S @done (12/06/2023, 09:15:57)
 ☐ - Attach user to order S
 ☐ - Auth users on order show S
 ✔ - Lock orders behind admin user S @done (10/06/2023, 13:35:53)
