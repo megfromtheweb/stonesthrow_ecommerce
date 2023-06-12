@@ -1,6 +1,11 @@
 h2.text-center.pb-5
   | Orders
 .d-flex.justify-content-center.pb-3
+  = button_to "All", orders_path, method: :get, class: ["btn", "btn-secondary", "shadow-lg", "m-1"]
+  = button_to "Ordered", orders_path, method: :get, params: { state: "ordered"}, class: ["btn", "btn-secondary", "shadow-lg", "m-1"]
+  = button_to "Packed", orders_path, method: :get, params: { state: "packed"}, class: ["btn", "btn-secondary", "shadow-lg", "m-1"]
+  = button_to "Dispatched", orders_path, method: :get, params: { state: "dispatched"}, class: ["btn", "btn-secondary", "shadow-lg", "m-1"]
+.d-flex.justify-content-center.pb-3
   = paginate @orders
 .row
   - if @orders.any?
@@ -23,6 +28,8 @@ h2.text-center.pb-5
                 td.text-capitalize = order.state
   - else
     h5
-      | You currently have no orders
+      | You currently have no
+      = " #{@state}" if @state.present?
+      |  orders
 .d-flex.justify-content-center.pb-3
   = paginate @orders

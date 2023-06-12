@@ -1,8 +1,8 @@
 ✔ - Popover for price on cart hover S @done (08/06/2023, 09:19:30)
 ☐ - Favicon S
 ☐ - improve test coverage M
-☐ - sort by price sort by newest - S
-☐ - orders page filter by status - S 
+☐ - sort by price sort by newest - S * save for write up
+✔ - orders page filter by status - S @done (12/06/2023, 10:48:40)
 ☐ - customer can't add more of an item than is in stock S
 ✔ - Current year copyright (dynamic) S @done (08/06/2023, 09:47:34)
 ✔ - Actual Product Images M @done (10/06/2023, 16:56:27)

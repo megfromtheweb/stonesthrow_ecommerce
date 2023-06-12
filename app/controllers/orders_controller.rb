@@ -7,11 +7,21 @@ class OrdersController < ApplicationController
   def index
     return not_found unless current_user && current_user.is_admin?
 
-    @title = "Orders"
-    @orders = Order
-      .ordered
-      .page(page_params)
-      .per(40)
+    if state.present?
+      @title = "#{state} orders".titleize
+      @orders = Order
+        .where(state: state)
+        .ordered
+        .page(page_params)
+        .per(40)
+      @state = state
+    else
+      @title = "Orders"
+      @orders = Order
+        .ordered
+        .page(page_params)
+        .per(40)
+    end
   end
 
   def show
@@ -74,6 +84,10 @@ class OrdersController < ApplicationController
 
   def page_params
     params.permit(:page)[:page]
+  end
+
+  def state
+    params.permit(:state)[:state]
   end
   
   def id
